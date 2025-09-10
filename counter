@@ -1,0 +1,29 @@
+module counter_1seg(
+	input wire clk,
+	input wire rst,
+	input wire en,
+	output wire [3:0] count,   
+	output wire eoc
+	);
+	
+	//variables internas 
+	wire clk_wire;
+	
+	// instancia 	  
+	freq_divider divider1 (
+	.clk(clk),
+	.rst(rst),
+	.clk_1hz(clk_wire)
+	);
+	
+	//instanciación
+	
+	counter_0000_111 contador1 (	   
+	.clk(clk_wire),
+	.rst(rst),
+	.en(en),
+	.count(count),
+	.eoc(eoc)
+	);
+	endmodule
+	
